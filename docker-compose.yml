@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  react-app:
+    build: .
+    volumes:
+      - ./src:/usr/src/app
+    ports:
+      - 3000:3000
+    tty: true
+    command: sh -c "cd react-sample && npm start"

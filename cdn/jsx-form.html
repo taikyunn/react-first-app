@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">Wait...</div>
+  <script type="text/babel">
+    let dom = document.querySelector('#root');
+
+    const p = {
+      fontSize: "20pt",
+      padding: "10px"
+    };
+
+    const input = {
+      fontSize: "16pt",
+      padding: "5px 10px"
+    };
+
+    let message = 'お名前を入力してください';
+    let val = '';
+
+    let doChange = (e) => {
+      val = e.target.value;
+      message = 'こんにちは' + val + 'さん';
+    };
+
+    let doAction = (e) => {
+      let el = (
+        <div>
+          <p style={p}>{message}</p>
+          <div>
+            <input type="text" id="input" style={input} onChange={doChange} />
+            <button onClick={doAction} style={input}>Click</button>
+          </div>
+        </div>
+      );
+      ReactDOM.render(el, dom);
+    };
+    doAction();
+  </script>
+</body>
+</html>
